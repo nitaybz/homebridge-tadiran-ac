@@ -1,7 +1,6 @@
 <img src="branding/tadiran_homebridge.png" width="500px">
 
 
-
 # homebridge-tadiran-ac
 
 [![Downloads](https://img.shields.io/npm/dt/homebridge-tadiran-ac.svg?color=critical)](https://www.npmjs.com/package/homebridge-tadiran-ac)
@@ -17,7 +16,7 @@
 
 Known to work:
 Tadiran IoT
-<img src="branding/device.jpg" width="160px">
+<br><img src="branding/device.jpg" width="160px">
 
 ### Requirements
 
