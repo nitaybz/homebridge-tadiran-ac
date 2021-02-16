@@ -1,73 +1,30 @@
 const TuyaAccessory = require('./lib/TuyaAccessory');
 const TuyaDiscovery = require('./lib/TuyaDiscovery');
-
-const OutletAccessory = require('./lib/OutletAccessory');
-const SimpleLightAccessory = require('./lib/SimpleLightAccessory');
-const MultiOutletAccessory = require('./lib/MultiOutletAccessory');
-const CustomMultiOutletAccessory = require('./lib/CustomMultiOutletAccessory');
-const RGBTWLightAccessory = require('./lib/RGBTWLightAccessory');
-const RGBTWOutletAccessory = require('./lib/RGBTWOutletAccessory');
-const TWLightAccessory = require('./lib/TWLightAccessory');
 const AirConditionerAccessory = require('./lib/AirConditionerAccessory');
-const AirPurifierAccessory = require('./lib/AirPurifierAccessory');
-const DehumidifierAccessory = require('./lib/DehumidifierAccessory');
-const ConvectorAccessory = require('./lib/ConvectorAccessory');
-const GarageDoorAccessory = require('./lib/GarageDoorAccessory');
-const SimpleDimmerAccessory = require('./lib/SimpleDimmerAccessory');
-const SimpleBlindsAccessory = require('./lib/SimpleBlindsAccessory');
-const SimpleBlinds2Accessory = require('./lib/SimpleBlinds2Accessory');
-const SimpleHeaterAccessory = require('./lib/SimpleHeaterAccessory');
-const SimpleFanAccessory = require('./lib/SimpleFanAccessory');
-const SimpleFanLightAccessory = require('./lib/SimpleFanLightAccessory');
-const SwitchAccessory = require('./lib/SwitchAccessory');
-const ValveAccessory = require('./lib/ValveAccessory');
-const OilDiffuserAccessory = require('./lib/OilDiffuserAccessory');
 
-const PLUGIN_NAME = 'homebridge-tuya-lan';
-const PLATFORM_NAME = 'TuyaLan';
+const PLUGIN_NAME = 'homebridge-tadiran-ac';
+const PLATFORM_NAME = 'TadiranAC';
 
 const CLASS_DEF = {
-    outlet: OutletAccessory,
-    simplelight: SimpleLightAccessory,
-    rgbtwlight: RGBTWLightAccessory,
-    rgbtwoutlet: RGBTWOutletAccessory,
-    twlight: TWLightAccessory,
-    multioutlet: MultiOutletAccessory,
-    custommultioutlet: CustomMultiOutletAccessory,
-    airconditioner: AirConditionerAccessory,
-    airpurifier: AirPurifierAccessory,
-    dehumidifier: DehumidifierAccessory,
-    convector: ConvectorAccessory,
-    garagedoor: GarageDoorAccessory,
-    simpledimmer: SimpleDimmerAccessory,
-    simpleblinds: SimpleBlindsAccessory,
-    simpleblinds2: SimpleBlinds2Accessory,
-    simpleheater: SimpleHeaterAccessory,
-    switch: SwitchAccessory,
-    fan: SimpleFanAccessory,
-    fanlight: SimpleFanLightAccessory,
-    watervalve: ValveAccessory,
-    oildiffuser: OilDiffuserAccessory
+    airconditioner: AirConditionerAccessory
 };
 
-let Characteristic, PlatformAccessory, Service, Categories, AdaptiveLightingController, UUID;
+let Characteristic, PlatformAccessory, Service, Categories, UUID;
 
 module.exports = function(homebridge) {
     ({
         platformAccessory: PlatformAccessory,
-        hap: {Characteristic, Service, AdaptiveLightingController, Accessory: {Categories}, uuid: UUID}
+        hap: {Characteristic, Service, Accessory: {Categories}, uuid: UUID}
     } = homebridge);
 
-    homebridge.registerPlatform(PLUGIN_NAME, PLATFORM_NAME, TuyaLan, true);
+    homebridge.registerPlatform(PLUGIN_NAME, PLATFORM_NAME, TadiranAC, true);
 };
 
-class TuyaLan {
+class TadiranAC {
     constructor(...props) {
         [this.log, this.config, this.api] = [...props];
 
         this.cachedAccessories = new Map();
-        this.api.hap.EnergyCharacteristics = require('./lib/EnergyCharacteristics')(this.api.hap.Characteristic);
-
         if(!this.config || !this.config.devices) {
             this.log("No devices found. Check that you have specified them in your config.json file.");
             return false;
@@ -88,7 +45,7 @@ class TuyaLan {
             try {
                 device.id = ('' + device.id).trim();
                 device.key = ('' + device.key).trim();
-                device.type = ('' + device.type).trim();
+                device.type = 'airconditioner';
 
                 device.ip = ('' + (device.ip || '')).trim();
             } catch(ex) {}
@@ -96,8 +53,6 @@ class TuyaLan {
             //if (!/^[0-9a-f]+$/i.test(device.id)) return this.log.error('%s, id for %s, is not a valid id.', device.id, device.name || 'unnamed device');
             if (!/^[0-9a-f]+$/i.test(device.key)) return this.log.error('%s, key for %s (%s), is not a valid key.', device.key.replace(/.{4}$/, '****'), device.name || 'unnamed device', device.id);
             if (!{16:1, 24:1, 32: 1}[device.key.length]) return this.log.error('%s, key for %s (%s), doesn\'t have the expected length.', device.key.replace(/.{4}$/, '****'), device.name || 'unnamed device', device.id);
-            if (!device.type) return this.log.error('%s (%s) doesn\'t have a type defined.', device.name || 'Unnamed device', device.id);
-            if (!CLASS_DEF[device.type.toLowerCase()]) return this.log.error('%s (%s) doesn\'t have a valid type defined.', device.name || 'Unnamed device', device.id);
 
             if (device.fake) fakeDevices.push({name: device.id.slice(8), ...device});
             else devices[device.id] = {name: device.id.slice(8), ...device};
@@ -111,11 +66,11 @@ class TuyaLan {
         TuyaDiscovery.start({ids: deviceIds})
             .on('discover', config => {
                 if (!config || !config.id) return;
-                if (!devices[config.id]) return this.log.warn('Discovered a device that has not been configured yet (%s@%s).', config.id, config.ip);
+                if (!devices[config.id]) return // this.log.warn('Discovered a device that has not been configured yet (%s@%s).', config.id, config.ip);
 
                 connectedDevices.push(config.id);
 
-                this.log.info('Discovered %s (%s) identified as %s (%s)', devices[config.id].name, config.id, devices[config.id].type, config.version);
+                this.log.info('Discovered %s (%s) identified as %s (%s)', devices[config.id].name, config.id, 'Air Conditioner', config.version);
 
                 const device = new TuyaAccessory({
                     ...devices[config.id], ...config,
@@ -191,7 +146,7 @@ class TuyaLan {
 
     addAccessory(device) {
         const deviceConfig = device.context;
-        const type = (deviceConfig.type || '').toLowerCase();
+        const type = 'airconditioner';
 
         const Accessory = CLASS_DEF[type];
 
@@ -207,8 +162,8 @@ class TuyaLan {
         if (!accessory) {
             accessory = new PlatformAccessory(deviceConfig.name, deviceConfig.UUID, Accessory.getCategory(Categories));
             accessory.getService(Service.AccessoryInformation)
-                .setCharacteristic(Characteristic.Manufacturer, (PLATFORM_NAME + ' ' + deviceConfig.manufacturer).trim())
-                .setCharacteristic(Characteristic.Model, deviceConfig.model || "Unknown")
+                .setCharacteristic(Characteristic.Manufacturer, 'Tadiran')
+                .setCharacteristic(Characteristic.Model, 'IOT Connect')
                 .setCharacteristic(Characteristic.SerialNumber, deviceConfig.id.slice(8));
 
             isCached = false;

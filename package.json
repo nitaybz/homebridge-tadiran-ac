@@ -1,26 +1,21 @@
 {
-  "name": "homebridge-tuya",
-  "version": "1.4.1-beta.1",
-  "description": "🏠 Offical Homebridge plugin for TuyAPI ",
+  "name": "homebridge-tadiran-ac",
+  "version": "0.0.1",
+  "description": "Homebridge plugin for Tadiran AC - Controlled by the Tuya Smart app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": {
-    "tuya-lan": "./bin/cli.js",
-    "tuya-lan-find": "./bin/cli-find.js",
-    "tuya-lan-decode": "./bin/cli-decode.js"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iRayanKhan/homebridge-tuya.git"
+    "url": "git+https://github.com/nitaybz/homebridge-tadiran-ac.git"
   },
-  "author": "Rayan Khan",
+  "author": "nitaybz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iRayanKhan/homebridge-tuya/issues"
+    "url": "https://github.com/nitaybz/homebridge-tadiran-ac/issues"
   },
-  "homepage": "https://github.com/iRayanKhan/homebridge-tuya#readme",
+  "homepage": "https://github.com/nitaybz/homebridge-tadiran-ac#readme",
   "dependencies": {
     "async": "^3.1.0",
     "commander": "^3.0.1",
@@ -33,11 +28,11 @@
   "keywords": [
     "homebridge-plugin",
     "homebridge",
-    "homebridge-tuya",
-    "tuya"
+    "homebridge-tadiran-ac",
+    "tadiran"
   ],
   "engines": {
-    "homebridge": ">=0.4.0",
-    "node": ">=8.6.0"
+    "homebridge": ">=0.4.4",
+    "node": ">=10.17.0"
   }
 }
