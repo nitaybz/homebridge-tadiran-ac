@@ -9,24 +9,25 @@
         "properties": {
             "devices": {
                 "type": "array",
-                "buttonText": "Add Device",
-                "orderable": false,
-                "buttonText": "Add Device",
-                "expandable": false,
-                "expanded": true,
                 "items": [
                     {
                         "type": "object",
                         "properties": {
                             "name": {
+                                "title": "Name",
+                                "description": "Name of the AC Unit",
                                 "type": "string",
                                 "required": true
                             },
                             "id": {
+                                "title": "Device ID",
+                                "description": "Follow <a target=\"_blank\" href=\"https://www.youtube.com/watch?v=oq0JL_wicKg\">this video</a> to get device ID and key",
                                 "type": "string",
                                 "required": true
                             },
                             "key": {
+                                "title": "Device Key",
+                                "description": "Follow <a target=\"_blank\" href=\"https://www.youtube.com/watch?v=oq0JL_wicKg\">this video</a> to get device ID and key",
                                 "type": "string",
                                 "required": true
                             },
@@ -84,5 +85,30 @@
                 ]
             }
         }
-    }
-  }
+    },
+    "layout": [
+        {
+            "key": "devices",
+            "type": "array",
+            "title": "Add Tadiran AC Units",
+            "orderable": false,
+            "buttonText": "Add Device",
+            "expandable": false,
+            "expanded": true,
+            "items": [
+                "devices[].name",
+                "devices[].id",
+                "devices[].key",
+                "devices[].minTemperature",
+                "devices[].maxTemperature",
+                "devices[].noSwing",
+                "devices[].noFanSpeed",
+                "devices[].noFan",
+                "devices[].noDry",
+                "devices[].noAuto",
+                "devices[].noCool",
+                "devices[].noHeat"
+            ]
+        }
+    ]
+}
