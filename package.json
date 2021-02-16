@@ -3,9 +3,6 @@
   "version": "0.0.3",
   "description": "Homebridge plugin for Tadiran AC - Controlled by the Tuya Smart app",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nitaybz/homebridge-tadiran-ac.git"
@@ -28,5 +25,26 @@
   "engines": {
     "homebridge": ">=0.4.4",
     "node": ">=10.17.0"
-  }
+  },
+  "devDependencies": {
+    "eslint": "^7.1.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "funding": [
+    {
+      "type": "paypal",
+      "url": "https://paypal.me/nitaybz"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/nitaybz"
+    },
+    {
+      "type": "kofi",
+      "url": "https://ko-fi.com/nitaybz"
+    }
+  ]
 }
