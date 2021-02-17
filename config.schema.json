@@ -8,107 +8,82 @@
         "type": "object",
         "properties": {
             "devices": {
-                "type": "array",
-                "items": [
-                    {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "title": "Name",
-                                "description": "Name of the AC Unit",
-                                "type": "string",
-                                "required": true
-                            },
-                            "id": {
-                                "title": "Device ID",
-                                "description": "Follow <a target=\"_blank\" href=\"https://www.youtube.com/watch?v=oq0JL_wicKg\">this video</a> to get device ID and key",
-                                "type": "string",
-                                "required": true
-                            },
-                            "key": {
-                                "title": "Device Key",
-                                "description": "Follow <a target=\"_blank\" href=\"https://www.youtube.com/watch?v=oq0JL_wicKg\">this video</a> to get device ID and key",
-                                "type": "string",
-                                "required": true
-                            },
-                            "minTemperature": {
-                                "title": "Minimum Temperature",
-                                "description": "Minimum Temperature to show in HomeKit",
-                                "default": 16,
-                                "type": "integer",
-                                "minimum": 10,
-                                "maximum": 35
-                            },
-                            "maxTemperature": {
-                                "title": "Maximum Temperature",
-                                "description": "Maximum Temperature to show in HomeKit",
-                                "default": 32,
-                                "type": "integer",
-                                "minimum": 10,
-                                "maximum": 35
-                            },
-                            "noSwing": {
-                                "title": "Disable Swing",
-                                "type": "boolean"
-                            },
-                            "noFanSpeed": {
-                                "title": "Disable Fan Speeds",
-                                "type": "boolean"
-                            },
-                            "noFan": {
-                                "title": "Disable FAN Mode Accessory",
-                                "description": "Disable FAN mode control - remove extra fan accessory",
-                                "type": "boolean"
-                            },
-                            "noDry": {
-                                "title": "Disable DRY Mode Accessory",
-                                "description": "Disable DRY mode control - remove extra dehumidifier accessory",
-                                "type": "boolean"
-                            },
-                            "noAuto": {
-                                "title": "Disable AUTO Mode",
-                                "description": "Disable AUTO mode control",
-                                "type": "boolean"
-                            },
-                            "noCool": {
-                                "title": "Disable COOL Mode",
-                                "description": "Disable COOL mode control",
-                                "type": "boolean"
-                            },
-                            "noHeat": {
-                                "title": "Disable HEAT Mode",
-                                "description": "Disable HEAT mode control",
-                                "type": "boolean"
-                            }
+                "type": "array", 
+                "title": "Tadiran Device",
+                "required": false,
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "title": "Name",
+                            "description": "Name of the AC Unit",
+                            "type": "string",
+                            "required": true
+                        },
+                        "id": {
+                            "title": "Device ID",
+                            "description": "Follow <a target=\"_blank\" href=\"https://www.youtube.com/watch?v=oq0JL_wicKg\">this video</a> to get device ID and key",
+                            "type": "string",
+                            "required": true
+                        },
+                        "key": {
+                            "title": "Device Key",
+                            "description": "Follow <a target=\"_blank\" href=\"https://www.youtube.com/watch?v=oq0JL_wicKg\">this video</a> to get device ID and key",
+                            "type": "string",
+                            "required": true
+                        },
+                        "minTemperature": {
+                            "title": "Minimum Temperature",
+                            "description": "Minimum Temperature to show in HomeKit",
+                            "default": 16,
+                            "type": "integer",
+                            "minimum": 10,
+                            "maximum": 35
+                        },
+                        "maxTemperature": {
+                            "title": "Maximum Temperature",
+                            "description": "Maximum Temperature to show in HomeKit",
+                            "default": 32,
+                            "type": "integer",
+                            "minimum": 10,
+                            "maximum": 35
+                        },
+                        "noSwing": {
+                            "title": "Disable Swing",
+                            "type": "boolean"
+                        },
+                        "noFanSpeed": {
+                            "title": "Disable Fan Speeds",
+                            "type": "boolean"
+                        },
+                        "noFan": {
+                            "title": "Disable FAN Mode Accessory",
+                            "description": "Disable FAN mode control - remove extra fan accessory",
+                            "type": "boolean"
+                        },
+                        "noDry": {
+                            "title": "Disable DRY Mode Accessory",
+                            "description": "Disable DRY mode control - remove extra dehumidifier accessory",
+                            "type": "boolean"
+                        },
+                        "noAuto": {
+                            "title": "Disable AUTO Mode",
+                            "description": "Disable AUTO mode control",
+                            "type": "boolean"
+                        },
+                        "noCool": {
+                            "title": "Disable COOL Mode",
+                            "description": "Disable COOL mode control",
+                            "type": "boolean"
+                        },
+                        "noHeat": {
+                            "title": "Disable HEAT Mode",
+                            "description": "Disable HEAT mode control",
+                            "type": "boolean"
                         }
                     }
-                ]
+                }
             }
         }
-    },
-    "layout": [
-        {
-            "key": "devices",
-            "type": "array",
-            "title": "Add Tadiran AC Units",
-            "orderable": false,
-            "buttonText": "Add Device",
-            "expandable": false,
-            "expanded": true,
-            "items": [
-                "devices[].name",
-                "devices[].id",
-                "devices[].key",
-                "devices[].minTemperature",
-                "devices[].maxTemperature",
-                "devices[].noSwing",
-                "devices[].noFanSpeed",
-                "devices[].noFan",
-                "devices[].noDry",
-                "devices[].noAuto",
-                "devices[].noCool",
-                "devices[].noHeat"
-            ]
-        }
-    ]
+    }
 }
