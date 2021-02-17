@@ -2,7 +2,7 @@
     "pluginAlias": "TadiranAC",
     "pluginType": "platform",
     "singular": true,
-    "headerDisplay": "Homebridge plugin for Tadiran AC units controlled by the Tuya Smart app",
+    "headerDisplay": "Homebridge plugin for Tadiran IoT AC units controlled by the Tuya",
     "footerDisplay": "Created by @nitaybz",
     "schema": {
         "type": "object",

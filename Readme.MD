@@ -9,14 +9,16 @@
 [![certified-hoobs-plugin](https://badgen.net/badge/HOOBS/Certified/yellow)](https://plugins.hoobs.org?ref=10876) [![hoobs-support](https://badgen.net/badge/HOOBS/Support/yellow)](https://support.hoobs.org?ref=10876) -->
 
 
-[Homebridge](https://github.com/nfarina/homebridge) plugin for Tadiran AC units controlled by the Tuya Smart app
+[Homebridge](https://github.com/nfarina/homebridge) plugin for Tadiran AC units controlled by the Tuya
 
 <img src="branding/product.jpg" width="300px">
 
 
-Known to work:
+#### Supported:
 Tadiran IoT
 <br><img src="branding/device.jpg" width="160px">
+
+Integration is known to work both with Tadiran app and Tuya Smart app, but will probably work with and Tuya clone apps.
 
 ### Requirements
 
@@ -24,7 +26,6 @@ Tadiran IoT
 <img src="https://img.shields.io/badge/homebridge-%3E%3D0.4.4-brightgreen"> &nbsp;
 <img src="https://img.shields.io/badge/iOS-%3E%3D11.0.0-brightgreen">
 
-\* Device must be connected and controlled by the Tuya Smart app.
 
 check with: `node -v` & `homebridge -V` and update if needed
 
@@ -37,7 +38,7 @@ To use this plugin, follow the steps below:
 2. Install this plugin using: `sudo npm install -g homebridge-tadiran-ac`
 3. Update your configuration file. See `config-sample.json` in this repository for a sample.
 
-**To get ID and Key** Watch [this](https://www.youtube.com/watch?v=oq0JL_wicKg) video. 
+**To get ID and key** Watch [this](https://www.youtube.com/watch?v=oq0JL_wicKg) video. 
 
 
 
