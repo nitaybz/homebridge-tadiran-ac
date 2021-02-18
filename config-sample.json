@@ -17,7 +17,6 @@
               "key": "d390j9j0943j04r22",
               "minTemperature": 16,
               "maxTemperature": 32,
-              "noSwing": false,
               "noFanSpeed": false,
               "noFan": false,
               "noDry": false,

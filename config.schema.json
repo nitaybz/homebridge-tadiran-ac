@@ -48,10 +48,6 @@
                             "minimum": 10,
                             "maximum": 35
                         },
-                        "noSwing": {
-                            "title": "Disable Swing",
-                            "type": "boolean"
-                        },
                         "noFanSpeed": {
                             "title": "Disable Fan Speeds",
                             "type": "boolean"
