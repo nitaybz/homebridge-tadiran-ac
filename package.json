@@ -1,6 +1,6 @@
 {
   "name": "homebridge-tadiran-ac",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Homebridge plugin for Tadiran AC - Controlled by the Tuya Smart app",
   "main": "index.js",
   "repository": {
