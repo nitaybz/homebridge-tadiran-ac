@@ -53,7 +53,7 @@ class TadiranAC {
 			}
 
 			//if (!/^[0-9a-f]+$/i.test(device.id)) return this.log.error('%s, id for %s, is not a valid id.', device.id, device.name || 'unnamed device');
-			if (!/^[0-9a-f]+$/i.test(device.key)) return this.log.error('%s, key for %s (%s), is not a valid key.', device.key.replace(/.{4}$/, '****'), device.name || 'unnamed device', device.id);
+			// if (!/^[0-9a-f]+$/i.test(device.key)) return this.log.error('%s, key for %s (%s), is not a valid key.', device.key.replace(/.{4}$/, '****'), device.name || 'unnamed device', device.id);
 			if (!{16:1, 24:1, 32: 1}[device.key.length]) return this.log.error('%s, key for %s (%s), doesn\'t have the expected length.', device.key.replace(/.{4}$/, '****'), device.name || 'unnamed device', device.id);
 
 			if (device.fake) fakeDevices.push({name: device.id.slice(8), ...device});
