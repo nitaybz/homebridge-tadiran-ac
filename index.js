@@ -14,7 +14,7 @@ let Characteristic, PlatformAccessory, Service, Categories, UUID;
 module.exports = function(homebridge) {
 	({
 		platformAccessory: PlatformAccessory,
-		hap: {Characteristic, Service, Accessory: {Categories}, uuid: UUID}
+		hap: {Characteristic, Service, Categories, uuid: UUID}
 	} = homebridge);
 
 	homebridge.registerPlatform(PLUGIN_NAME, PLATFORM_NAME, TadiranAC, true);

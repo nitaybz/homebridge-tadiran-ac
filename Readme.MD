@@ -22,10 +22,9 @@ Integration is known to work both with Tadiran app and Tuya Smart app, but will 
 
 ### Requirements
 
-<img src="https://img.shields.io/badge/node-%3E%3D10.17-brightgreen"> &nbsp;
-<img src="https://img.shields.io/badge/homebridge-%3E%3D0.4.4-brightgreen"> &nbsp;
-<img src="https://img.shields.io/badge/iOS-%3E%3D11.0.0-brightgreen">
-
+<img src="https://img.shields.io/badge/node-%5E22.10%20%7C%7C%20%5E24-brightgreen"> &nbsp;
+<img src="https://img.shields.io/badge/homebridge-%5E1.8%20%7C%7C%20%5E2-brightgreen"> &nbsp;
+<img src="https://img.shields.io/badge/iOS-%3E%3D14-brightgreen">
 
 check with: `node -v` & `homebridge -V` and update if needed
 
